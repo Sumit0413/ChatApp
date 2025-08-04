@@ -1,5 +1,5 @@
 import { User } from "../models/userModel.js";
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export const register = async (req, res) => {
@@ -42,7 +42,7 @@ export const Login = async (req, res) => {
         if (!userName || !password) {
             return res.status(400).json({ message: "Username and password are required" });
         }
-        const existingUser =  await userName.findOne({ userName})
+        const existingUser = await User.findOne({ userName });
         if (!existingUser) {
             return res.status(400).json({ message: "User does not exist" });
         }
@@ -53,7 +53,7 @@ export const Login = async (req, res) => {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+        const token = jwt.sign({ userId: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
         return res.status(200).cookie("token", token, 
             { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: 'strict' })
             .json({
@@ -96,6 +96,6 @@ export const getOtherUsers = async (req, res) => {
         
     } catch (error) {
         console.log(error);
-        // Note: Missing error response to client (should add this)
+       
     }
 }
