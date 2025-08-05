@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import connectDB from './config/dbConnect.js';
 import userRoute from './routes/userRoute.js';
+import messageRoute from './routes/messageRoute.js';
 
 
 dotenv.config();
@@ -21,12 +22,15 @@ app.use(cors({
 }));
 
 app.use("/api/v1/user",userRoute); 
+app.use("/api/v1/message",messageRoute);
 
 app.get('/',(req,res)=>{
     console.log('Hello World');
     res.send('Hello World');
 });
 
+
+   
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
