@@ -5,6 +5,9 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+   preview: {
+    allowedHosts: ['chatapp-production-8642.up.railway.app']
+  },
   build: {
     outDir: 'dist',
     sourcemap: false,
