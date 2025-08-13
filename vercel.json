@@ -1,25 +1,12 @@
 {
-  "version": 2,
-  "name": "whatsapp-clone-frontend",
-  "builds": [
-    {
-      "src": "Frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "Frontend/dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/.*",
-      "dest": "/Frontend/dist/index.html"
-    }
-  ],
-  "buildCommand": "cd Frontend && npm install && npm run build",
+  "buildCommand": "cd Frontend && npm ci && npm run build",
   "outputDirectory": "Frontend/dist",
-  "installCommand": "cd Frontend && npm install"
+  "installCommand": "cd Frontend && npm ci",
+  "devCommand": "cd Frontend && npm run dev",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
