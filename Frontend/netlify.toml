@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "npm run dev"
+
+[context.production.environment]
+  VITE_API_BASE_URL = "your-backend-url-here"
+  VITE_SOCKET_URL = "your-socket-url-here"
