@@ -17,7 +17,12 @@ const server = createServer(app);
 // Socket.IO setup
 const io = new Server(server, {
     cors: {
-        origin: ["http://localhost:5173", "http://localhost:5174"],
+        origin: [
+            "http://localhost:5173", 
+            "http://localhost:5174",
+            "https://sdb0r1qc-5173.inc1.devtunnels.ms",
+            "https://sdb0r1qc-5173.inc1.devtunnels.ms/"
+        ],
         credentials: true
     }
 });
@@ -28,7 +33,12 @@ connectDB();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: [
+        "http://localhost:5173", 
+        "http://localhost:5174",
+        "https://sdb0r1qc-5173.inc1.devtunnels.ms",
+        "https://sdb0r1qc-5173.inc1.devtunnels.ms/"
+    ],
     credentials: true
 }));
 
